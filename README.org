@@ -14,7 +14,7 @@ This script automatically scan .xcodeproj directory and show cflags list for edi
 
 This is example emacs setup:
 
-#+BEGIN_SRC elisp
+#+BEGIN_SRC emacs-lisp
   (defun ac-cc-mode-setup ()
     (setq ac-clang-cflags
           (split-string
