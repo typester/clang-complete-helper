@@ -29,7 +29,7 @@ func _printCfags(file string, w io.Writer) {
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "iPhone SDK not found\n")
 		} else {
-			fmt.Fprintf(w, "-isysroot=%s -miphoneos-version-min=4.0 -arch=i386", sdkroot)
+			fmt.Fprintf(w, "-isysroot %s -miphoneos-version-min=4.0 -arch=i386", sdkroot)
 		}
 	}
 
