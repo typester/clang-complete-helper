@@ -15,7 +15,8 @@ func PrintCflags(file string) {
 func _printCfags(file string, w io.Writer) {
 	p, err := FindProject(file)
 	if err != nil {
-		panic(err.Error())
+		fmt.Fprintf(os.Stderr, "Error: %s\n", err.Error())
+		return
 	}
 
 	cflags := p.Cflags()
@@ -26,7 +27,7 @@ func _printCfags(file string, w io.Writer) {
 	if p.Type() == "iphoneos" {
 		sdkroot, err := find_ios_sdkroot()
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "iPhone SDK not found")
+			fmt.Fprintf(os.Stderr, "iPhone SDK not found\n")
 		} else {
 			fmt.Fprintf(w, "-isysroot=%s -miphoneos-version-min=4.0 -arch=i386", sdkroot)
 		}
