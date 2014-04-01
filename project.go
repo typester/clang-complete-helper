@@ -1,9 +1,9 @@
 package main
 
 import (
-	"path/filepath"
 	"errors"
 	"io/ioutil"
+	"path/filepath"
 	"regexp"
 	"strings"
 )
@@ -39,7 +39,7 @@ func FindProject(file string) (*Project, error) {
 }
 
 func find_xcodeproj(dir string) (string, error) {
-	m, err := filepath.Glob( filepath.Join(dir, "*.xcodeproj") )
+	m, err := filepath.Glob(filepath.Join(dir, "*.xcodeproj"))
 	if err != nil {
 		return "", err
 	}
@@ -81,7 +81,7 @@ func (p *Project) Cflags() []string {
 
 		m := re.FindAllStringSubmatch(string(m[1]), -1)
 
-		for _, l := range(m) {
+		for _, l := range m {
 			if len(l) >= 2 {
 				if l[1] == "$(inherited)" { // ignore
 					continue

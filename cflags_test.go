@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"bytes"
+	"testing"
 )
 
 func TestPrintCflags(t *testing.T) {

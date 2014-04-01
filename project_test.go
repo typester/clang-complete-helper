@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"path/filepath"
+	"testing"
 )
 
 func Test_find_xcodeproj(t *testing.T) {
@@ -12,7 +12,7 @@ func Test_find_xcodeproj(t *testing.T) {
 		t.Errorf("err shoud nil: %s", e.Error())
 	}
 
-	expected, e := filepath.Abs( filepath.Join("./testfiles/osxproject", "osxproject.xcodeproj" ) )
+	expected, e := filepath.Abs(filepath.Join("./testfiles/osxproject", "osxproject.xcodeproj"))
 	if e != nil {
 		t.Errorf("err shoud nil: %s", e.Error())
 	}
@@ -85,20 +85,3 @@ func Test_Project_Cflags_notfound(t *testing.T) {
 		t.Error("flags should be empty")
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

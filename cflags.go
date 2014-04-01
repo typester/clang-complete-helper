@@ -1,11 +1,11 @@
 package main
 
 import (
-	"path/filepath"
 	"errors"
-	"os"
 	"fmt"
 	"io"
+	"os"
+	"path/filepath"
 )
 
 func PrintCflags(file string) {
@@ -20,7 +20,7 @@ func _printCfags(file string, w io.Writer) {
 	}
 
 	cflags := p.Cflags()
-	for _, flag := range(cflags) {
+	for _, flag := range cflags {
 		fmt.Fprintf(w, `-I"%s" `, flag)
 	}
 
@@ -35,7 +35,6 @@ func _printCfags(file string, w io.Writer) {
 
 	fmt.Fprintf(w, "\n")
 }
-
 
 func find_ios_sdkroot() (string, error) {
 	dir := "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs"
