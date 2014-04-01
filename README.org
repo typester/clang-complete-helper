@@ -1,0 +1,31 @@
+* clang-complete-helper
+
+Tiny command-line application that helps you to set CFLAGS for [[https://github.com/Golevka/emacs-clang-complete-async][emacs-clang-complete-async]].
+
+This script automatically scan .xcodeproj directory and show cflags list for editing objective-c source.
+
+** Install
+
+#+BEGIN_SRC sh
+  go get -u github.com/typester/clang-complete-helper
+#+END_SRC
+
+** Setup
+
+This is example emacs setup:
+
+#+BEGIN_SRC elisp
+  (defun ac-cc-mode-setup ()
+    (setq ac-clang-cflags
+          (split-string
+           (shell-command-to-string (concat (executable-find "clang-complete-helper") " cflags "
+                                            (and buffer-file-name
+                                                 (file-relative-name buffer-file-name))))))
+    (setq ac-sources '(ac-source-clang-async))
+    (ac-clang-launch-completion-process)
+    (yas/minor-mode-on))
+  
+  (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+#+END_SRC
+
+Note: you need to place =clang-complete-helper= in PATH
